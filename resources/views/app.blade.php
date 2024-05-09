@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title inertia>{{ config('app.name', 'SaborBooking') }}</title>
+        
+        <!-- Tailwind -->
+        @vite('resources/css/app.css') 
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,7 +18,6 @@
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
 
-        @vite('resources/css/app.css')
     </head>
     <body class="font-sans antialiased">
         @inertia

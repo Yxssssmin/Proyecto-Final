@@ -1,0 +1,136 @@
+
+/* Variables */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --primary1: #4855fe;
+  --primary2: #ffe537;
+  --textCol: #999;
+}
+
+/* Import fonts */
+@font-face {
+  font-family: "bodoni svtytwo sc itc tt book";
+  src: url(../fonts/bodoni-svtytwo-sc-itc-tt-book.ttf);
+}
+
+/* Mixins */
+@mixin main-font {
+  font-family: "Poppins", sans-serif;
+}
+
+@mixin secondary-font {
+  font-family: "bodoni svtytwo sc itc tt book", sans-serif;
+  font-weight: 400;
+}
+
+@mixin hero_btn($col1, $col2, $pad1, $pad2, $bRadius) {
+  display: inline-block;
+  padding: $pad1 $pad2;
+  background-color: $col1;
+  color: $col2;
+  border-radius: $bRadius;
+  transition: all 0.3s;
+  border: 1px solid $col1;
+  outline: none;
+
+  &:hover {
+    background-color: transparent;
+    color: $col1;
+  }
+}
+
+@mixin upperBold {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Global styles */
+body {
+  font-family: "Poppins", sans-serif;
+  color: #0c0c0c;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  background-image: url(../images/body-bg.jpg);
+  background-size: cover;
+}
+
+.layout_padding {
+  padding: 90px 0;
+}
+
+.layout_padding2 {
+  padding: 75px 0;
+}
+
+.layout_padding2-top {
+  padding-top: 75px;
+}
+
+.layout_padding2-bottom {
+  padding-bottom: 75px;
+}
+
+.layout_padding-top {
+  padding-top: 90px;
+}
+
+.layout_padding-bottom {
+  padding-bottom: 90px;
+}
+
+/* Heading container */
+.heading_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heading_container h2 {
+  font-size: 2.5rem;
+  position: relative;
+  font-weight: bold;
+  margin-bottom: 0;
+  font-family: "bodoni svtytwo sc itc tt book", sans-serif;
+  padding-bottom: 7px;
+}
+
+.heading_container h2::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 5px;
+  background-color: #ff5a00;
+}
+
+.heading_container.heading_center {
+  align-items: center;
+  text-align: center;
+}
+
+/* Box image */
+.box-img {
+  width: 100%;
+}
+
+/* Links */
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: initial;
+}
+
+/* Buttons */
+.btn,
+.btn:focus {
+  outline: none !important;
+  box-shadow: none;
+}
