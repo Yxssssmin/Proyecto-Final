@@ -25,3 +25,8 @@ Route::middleware([
 });
 
 Route::get('/opciones', [OpcionesController::class, 'opciones'])->name('opciones');
+
+Route::get('/reservar', function() {
+    return Inertia::render('Booking');
+})->name('booking');
+

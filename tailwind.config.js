@@ -13,6 +13,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        './src/**/*.{vue,js,ts}'
     ],
 
     theme: {
@@ -23,5 +24,9 @@ export default {
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [
+        forms, 
+        typography,
+        require('daisyui')
+    ], 
 };
