@@ -8,7 +8,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
   <AppLayout title="Reservar">
     <div class="min-h-screen bg-gray-100 p-0 sm:p-12">
         <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-          <h1 class="text-2xl font-bold mb-8">Form With Floating Labels</h1>
+          <h1 class="reserva font-mono text-2xl font-bold mb-8">Reserva de Restaurantes</h1>
           <form id="form" novalidate>
             <div class="relative z-0 w-full mb-5">
               <input
@@ -18,31 +18,10 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                 required
                 class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
               />
-              <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Enter name</label>
+              <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Nombre a reservar</label>
               <span class="text-sm text-red-600 hidden" id="error">Name is required</span>
             </div>
-      
-            <div class="relative z-0 w-full mb-5">
-              <input
-                type="email"
-                name="email"
-                placeholder=" "
-                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              />
-              <label for="email" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Enter email address</label>
-              <span class="text-sm text-red-600 hidden" id="error">Email address is required</span>
-            </div>
-      
-            <div class="relative z-0 w-full mb-5">
-              <input
-                type="password"
-                name="password"
-                placeholder=" "
-                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              />
-              <label for="password" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Enter password</label>
-              <span class="text-sm text-red-600 hidden" id="error">Password is required</span>
-            </div>
+
       
             <fieldset class="relative z-0 w-full p-px mb-5">
               <legend class="absolute text-gray-500 transform scale-75 -top-3 origin-0">Choose an option</legend>
@@ -120,7 +99,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                 class="pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
               />
               <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">$</div>
-              <label for="money" class="absolute duration-300 top-3 left-5 -z-1 origin-0 text-gray-500">Amount</label>
+              <label for="money" class="absolute duration-300 top-3 left-5 -z-1 origin-0 text-gray-500">Precio</label>
               <span class="text-sm text-red-600 hidden" id="error">Amount is required</span>
             </div>
       
@@ -139,9 +118,9 @@ import AppLayout from '@/Layouts/AppLayout.vue';
             <button
               id="button"
               type="button"
-              class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-pink-500 hover:bg-pink-600 hover:shadow-lg focus:outline-none"
+              class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
             >
-              Toggle Error
+              Reservar
             </button>
           </form>
         </div>

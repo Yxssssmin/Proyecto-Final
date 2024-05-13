@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
                 ->action(Lang::get('Verificar ahora'), $verificationUrl)
                 ->line(Lang::get('Si no creaste una cuenta, no es necesario tomar ninguna otra acción.'))
                 ->salutation(new HtmlString(
-                    Lang::get("Saludos.").'<br>' .'<strong>'. Lang::get("Nuestro equipo") . '</strong>'
+                    Lang::get("Saludos.").'<br>' .'<strong>'. Lang::get("SaborBooking") . '</strong>'
                 ));
         };
     }

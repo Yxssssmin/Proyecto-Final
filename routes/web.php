@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\OpcionesController;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -24,9 +26,9 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/opciones', [OpcionesController::class, 'opciones'])->name('opciones');
+Route::get('/opciones', [OpcionesController::class, 'opciones'])->middleware(['auth'])->name('opciones');
 
 Route::get('/reservar', function() {
     return Inertia::render('Booking');
-})->name('booking');
+})->middleware(['auth'])->name('booking');
 
