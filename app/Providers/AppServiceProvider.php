@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\ServiceProvider;
 
@@ -34,5 +35,7 @@ class AppServiceProvider extends ServiceProvider
                     Lang::get("Saludos.").'<br>' .'<strong>'. Lang::get("SaborBooking") . '</strong>'
                 ));
         };
+
+        Schema::defaultStringLength(191);
     }
 }

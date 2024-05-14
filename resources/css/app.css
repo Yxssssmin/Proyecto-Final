@@ -1,3 +1,6 @@
+@import url(./style.css);
+@import url(./slick.min.css);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

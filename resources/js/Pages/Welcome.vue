@@ -41,8 +41,6 @@ function handleImageError() {
 
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap');
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css');
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css.map');
 
 </style>
 

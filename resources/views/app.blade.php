@@ -9,6 +9,9 @@
         <!-- Tailwind -->
         @vite('resources/css/app.css') 
 
+        <!-- Jquery -->
+        <script src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -21,5 +24,6 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
     </body>
 </html>

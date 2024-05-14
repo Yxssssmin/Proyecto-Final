@@ -1,11 +1,4 @@
-// to get current year
-function getYear() {
-    var currentDate = new Date();
-    var currentYear = currentDate.getFullYear();
-    document.querySelector("#displayYear").innerHTML = currentYear;
-}
 
-getYear();
 
 // toggle overlay menu
 function openNav() {
@@ -14,12 +7,12 @@ function openNav() {
 }
 
 // nice select
-$(document).ready(function () {
+$(document).on('ready', function () {
     $('select').niceSelect();
 });
 
-// slick slider
 
+// slick slider
 $(".slider_container").slick({
     autoplay: true,
     autoplaySpeed: 10000,
