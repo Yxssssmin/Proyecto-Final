@@ -15,13 +15,17 @@ class CreateReservasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users');
+            $table->unsignedBigInteger('id_restaurante');
+            $table->foreign('id_restaurante')->references('id')->on('restaurantes');
             $table->string('nombre_reserva', 100);
             $table->text('tipo_comida');
-            $table->string('ubicacion', 100);
+            $table->string('ciudad', 100);
             $table->integer('numero_personas');
             $table->string('numero_contacto', 20);
             $table->string('codigo_reserva', 20)->unique();
-            $table->timestamps();
+            $table->dateTime('fecha_reserva');
+            $table->enum('estado_reserva', ['activo', 'finalizado'])->default('activo');
+            $table->timestamps(); // Añade created_at y updated_at automáticamente
         });
     }
 
