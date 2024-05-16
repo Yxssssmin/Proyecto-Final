@@ -29,6 +29,7 @@
         "@material-tailwind/html": "^2.2.2",
         "@material-tailwind/react": "^2.1.9",
         "bootstrap": "^5.3.3",
+        "google-maps-api-loader": "^1.1.1",
         "jquery": "^3.7.1",
         "slick-carousel-latest": "^1.9.0",
         "vue-slick": "^1.2.0"

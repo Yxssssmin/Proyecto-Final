@@ -1,5 +1,6 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
+import LocationAutocomplete from '@/Components/LocationAutocomplete.vue';
 import { ref } from 'vue'; // Importamos ref para manejar los datos del formulario
 
 // Creamos variables reactivas para almacenar los datos del formulario
@@ -23,6 +24,11 @@ const handleSubmit = () => {
     fechaReserva: fechaReserva.value,
     horaReserva: horaReserva.value
   });
+};
+
+const handleLocationSelect = (suggestion) => {
+  // Aquí puedes manejar la selección de la ubicación, por ejemplo, actualizar el valor de la ubicación en el formulario
+  ubicacion.value = suggestion.description;
 };
 </script>
 
@@ -84,18 +90,7 @@ const handleSubmit = () => {
             </fieldset>
 
             <!-- Agregamos un campo de texto para la ubicación -->
-            <div class="relative z-0 w-full mb-5">
-              <input
-                v-model="ubicacion"
-                type="text"
-                name="ubicacion"
-                placeholder=" "
-                required
-                class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-              />
-              <label for="ubicacion" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Ubicación</label>
-              <span class="text-sm text-red-600 hidden" id="error">Ubicación es requerida</span>
-            </div>
+            <LocationAutocomplete @onSelect="handleLocationSelect" />
 
             <!-- Agregamos campos de fecha y hora para la reserva -->
             <div class="flex flex-row space-x-4">
