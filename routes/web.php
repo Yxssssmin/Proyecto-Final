@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\OpcionesController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -28,7 +30,15 @@ Route::middleware([
 
 Route::get('/opciones', [OpcionesController::class, 'opciones'])->middleware(['auth'])->name('opciones');
 
+// ---------------- FORM RESERVAS -------------------
+
 Route::get('/reservar', function() {
     return Inertia::render('Booking');
 })->middleware(['auth'])->name('booking');
+
+Route::get('/getCities', [RestaurantController::class, 'getCities']);
+
+Route::get('/obtenerTiposDeComida', [RestaurantController::class, 'obtenerTiposDeComida']);
+
+Route::post('/reservas', [ReservaController::class, 'store']);
 
