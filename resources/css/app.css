@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
 @import url(./style.css);
 @import url(./slick.min.css);
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-quartz.css";
 
 @tailwind base;
 @tailwind components;
@@ -83,4 +86,68 @@ select:focus ~ label {
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
   left: 0px;
+}
+
+/* DASHBOARD */
+
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track{
+  background: #2D3748;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #CBD5E0;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: #718096;
+}
+
+main {
+  margin-top: 1.4rem;
+}
+
+main .insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  margin-left: 20%;
+}
+
+main .insights > div {
+  background: white;
+  padding: 1.8rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
+  transition: all 300ms ease;
+}
+
+main .insights > div:hover {
+  box-shadow: none;
+}
+
+main .insights > div span {
+  background: coral;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+}
+
+main .insights > div .middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#mapa {
+  height: 300px; /* Altura deseada del mapa */
+  width: 100%; /* Opcional: Ajusta el ancho según tu diseño */
+  border-radius: 8px; /* Opcional: Aplica un borde redondeado al mapa */
+  margin-bottom: 20px; /* Espacio adicional inferior */
 }

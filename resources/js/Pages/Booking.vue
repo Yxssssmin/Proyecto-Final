@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { ref, computed, onMounted } from 'vue';
+import Swal from 'sweetalert2';
 
 // Creamos variables reactivas para almacenar los datos del formulario
 const nombreReserva = ref('');
@@ -12,6 +13,7 @@ const numeroPersonas = ref(0);
 const numeroContacto = ref('');
 const fechaReserva = ref('');
 const horaReserva = ref('');
+const csrfToken = ref('');
 
 // Función para manejar el envío del formulario
 const handleSubmit = async () => {
@@ -25,6 +27,7 @@ const handleSubmit = async () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken.value
             },
             body: JSON.stringify({
                 nombreReserva: nombreReserva.value,
@@ -39,12 +42,43 @@ const handleSubmit = async () => {
 
         if (response.ok) {
             console.log('Reserva creada exitosamente');
-            // Aquí puedes redirigir al usuario a una página de éxito o realizar otras acciones
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Datos guardados exitosamente',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didClose: () => {
+                    window.location.href = `/restaurantes?tipoComida=${tipoComida.value}&ubicacion=${ubicacion.value}`;
+                }
+            });
         } else {
             console.error('Error al crear la reserva:', response.statusText);
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'error',
+                title: 'Error al crear la reserva',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+
+            });
         }
     } catch (error) {
         console.error('Error al crear la reserva:', error);
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error al crear la reserva',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+        });
+
     }
 };
 
@@ -62,15 +96,16 @@ const isFormValid = computed(() => {
 });
 
 // Función para manejar la selección de la ubicación
-const handleLocationSelect = (suggestion) => {
-    // Actualizar el valor de la ubicación en el formulario
-    ubicacion.value = suggestion.description;
+const handleLocationSelect = async (selectedCity) => {
+    ubicacion.value = selectedCity;
+    await obtenerTiposDeComida(selectedCity);
 };
 
 // Obtener las ciudades y tipos de comida cuando el componente se monta
 onMounted(() => {
     fetchCities();
     obtenerTiposDeComida();
+    fetchCsrfToken();
 });
 
 // Lógica para obtener la lista de ciudades desde el backend
@@ -84,16 +119,28 @@ const fetchCities = async () => {
     }
 };
 
-// Lógica para obtener la lista de tipos de comida desde el backend
-const obtenerTiposDeComida = async () => {
+// Lógica para obtener la lista de tipos de comida desde el backend según la ciudad seleccionada
+const obtenerTiposDeComida = async (selectedCity) => {
     try {
-        const response = await fetch('/obtenerTiposDeComida');
+        const response = await fetch(`/obtenerTiposDeComida?city=${selectedCity}`);
         const data = await response.json();
         tiposDeComida.value = data;
     } catch (error) {
         console.error('Error al obtener los tipos de comida:', error);
     }
 };
+
+// Lógica para obtener el token CSRF desde el backend
+const fetchCsrfToken = async () => {
+    try {
+        const response = await fetch('/csrf-token');
+        const data = await response.json();
+        csrfToken.value = data.csrfToken;
+    } catch (error) {
+        console.error('Error al obtener el token CSRF:', error);
+    }
+};
+
 </script>
 
 <template>
@@ -115,23 +162,26 @@ const obtenerTiposDeComida = async () => {
                         <span class="text-sm text-red-600 hidden" id="error">Nombre es requerido</span>
                     </div>
 
-                    <!-- Agregamos radio buttons para el tipo de comida -->
-                    <div class="relative z-0 w-full mb-5">
-                        <select v-model="tipoComida" class="form-control pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200" required>
-                            <option value="">Selecciona el estilo de cocina</option>
-                            <option v-for="comida in tiposDeComida" :key="comida" :value="comida">{{ comida }}</option>
-                        </select>
-                        <span class="text-sm text-red-600 hidden" id="error">Tipo de comida es requerido</span>
-                    </div>
-
                     <!-- Agregamos un campo de texto para la ubicación -->
                     <div class="relative z-0 w-full mb-5">
-                        <select v-model="ubicacion" class="form-control pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200" required>
+                        <select v-model="ubicacion" @change="handleLocationSelect(ubicacion)" class="form-control pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200" required>
                             <option value="">Selecciona una ubicación</option>
                             <option v-for="city in cities" :key="city" :value="city">{{ city }}</option>
                         </select>
                         <span class="text-sm text-red-600 hidden" id="error">Ubicación es requerida</span>
                     </div>
+                    
+                    <!-- Agregamos un radio buttons para el tipo de comida -->
+                    <div class="relative z-0 w-full mb-5">
+                        <select v-model="tipoComida" class="form-control pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200" required>
+                        <option value="">Selecciona el estilo de cocina</option>
+                        <!-- Usamos v-if para mostrar la lista de tipos de comida solo si hay opciones disponibles -->
+                        <option v-if="tiposDeComida.length === 0" disabled>No hay opciones disponibles</option>
+                        <option v-else v-for="comida in tiposDeComida" :key="comida" :value="comida">{{ comida }}</option>
+                        </select>
+                        <span class="text-sm text-red-600 hidden" id="error">Tipo de comida es requerido</span>
+                    </div>
+
 
                     <!-- Agregamos campos de fecha y hora para la reserva -->
                     <div class="flex flex-row space-x-4">
@@ -198,6 +248,7 @@ const obtenerTiposDeComida = async () => {
                     </button>
                 </form>
             </div>
+            <!-- <SavedModal v-show="showModal" /> -->
         </div>
     </AppLayout>
 </template>

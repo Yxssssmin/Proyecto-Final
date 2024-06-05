@@ -5,7 +5,6 @@
         <div class="col-lg-10 mx-auto">
           <div class="detail-box">
             <h1>Discover Restaurant And Food</h1>
-            <p>When looking at its layout. The point of using Lorem Ipsum</p>
           </div>
           <div class="find_container">
             <div class="container">
@@ -36,48 +35,6 @@
         </div>
       </div>
     </div>
-    <div class="slider_container">
-      <!-- Aquí van los items del slider -->
-      <div class="item">
-        <div class="img-box">
-          <img src="images/main-page/slider-img1.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="img-box">
-          <img src="images/main-page/slider-img2.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="img-box">
-          <img src="images/main-page/slider-img3.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="img-box">
-          <img src="images/main-page/slider-img4.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="img-box">
-          <img src="images/main-page/slider-img1.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="img-box">
-          <img src="images/main-page/slider-img2.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="img-box">
-          <img src="images/main-page/slider-img3.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="img-box">
-          <img src="images/main-page/slider-img4.png" alt="">
-        </div>
-      </div>
-    </div>
+
   </section>
 </template>

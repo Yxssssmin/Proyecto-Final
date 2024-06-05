@@ -5,8 +5,7 @@
         <div class="row">
           <div class="col-md-7 col-lg-8">
             <div class="detail-box">
-              <h2><span>Get the</span><br>Delfood App</h2>
-              <p>long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The poin</p>
+              <h2><span>Get the</span><br>SaborBooking App</h2>
               <div class="app_btn_box">
                 <a href="" class="mr-1">
                   <img src="images/main-page/google_play.png" class="box-img" alt="">

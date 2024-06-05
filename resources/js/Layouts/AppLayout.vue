@@ -60,6 +60,12 @@ const logout = () => {
                             </div> 
 
                             <div class="hidden space-x-10 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('misreservas')" :active="route().current('misreservas')">
+                                    Mis reservas
+                                </NavLink>
+                            </div> 
+
+                            <div class="hidden space-x-10 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>

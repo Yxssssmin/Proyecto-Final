@@ -19,4 +19,9 @@ export default defineConfig({
             },
         }),
     ],
+    resolve: {
+        alias: {
+            '@': '/resources/js' // Ajuste para proyectos Laravel
+        }
+    }
 });
